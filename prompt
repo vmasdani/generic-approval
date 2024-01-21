@@ -1,0 +1,48 @@
+i need a python file in which i run something like this:
+
+./manage.py run backend dev
+
+it'll run things according to this json config
+
+{
+    "env": {
+      "dev": {
+        "db_host": "localhost",
+        "db_name": "approval",
+        "db_username": "root",
+        "db_password": "mypass",
+        "base_url": "http://localhost:8000"
+      },
+      "prod": {
+        "db_host": "localhost",
+        "db_name": "approval",
+        "db_username": "root",
+        "db_password": "mypass",
+        "base_url": "http://localhost:8000"
+      }
+    }
+  }
+  
+and it'll replace this string from the template file to the destination according to the env. for example
+#{db_host}, becomes localhost
+#{db_password}, becomes mypass
+
+The files needed:
+backend.env.template > ./backend/.env
+admin.frontend.env.template > ./admin/.env
+app.frontend.env.template > ./admin/.env
+
+after that, run the actions with subprocess
+
+The available actions are:
+
+run:
+- backend: php artisan serve in backend folder
+- admin: yarn dev in admin folder
+- app: yarn dev in app folder
+
+build :
+- backend: "zip -r release.zip ." in backend folder
+- admin: yarn build, then "zip -r release.zip ." in dist folder. in admin folder
+- app: yarn build, then "zip -r release.zip ." in dist folder. in app folder
+
