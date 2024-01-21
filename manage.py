@@ -14,7 +14,10 @@ def process_template(template_path, dest_path, config):
     with open(template_path, 'r') as file:
         content = file.read()
     for key, value in config.items():
-        content = content.replace(f'#{key}', value)
+        # print(f'{template_path}: {key}')
+        content = content.replace(f'#{{{key}}}', value)
+
+    # print(content)
     with open(dest_path, 'w') as file:
         file.write(content)
 
