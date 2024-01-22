@@ -8,7 +8,10 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import HomeVue from "./Home.vue";
 import UserVue from "./User.vue";
 import ConfigVue from "./Config.vue";
-
+import UserDetailVue from "./UserDetail.vue";
+import DocumentVue from "./Document.vue";
+import DocumentDetailVue from "./DocumentDetail.vue";
+import "vue-select/dist/vue-select.css";
 
 export const ctx = ref({
   apiKey: localStorage.getItem("apiKey") as null | string,
@@ -17,7 +20,10 @@ export const ctx = ref({
 const routes = [
   { path: "/", component: HomeVue },
   { path: "/user", component: UserVue },
+  { path: "/user/:id", component: UserDetailVue },
   { path: "/config", component: ConfigVue },
+  { path: "/document", component: DocumentVue },
+  { path: "/document/:id", component: DocumentDetailVue },
 
   // { path: '/about', component: About },
 ];

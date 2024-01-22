@@ -44,6 +44,7 @@ class ApprovalConfig extends Model
         
         'user_id',
         'position',
+        
     ];
 
 }

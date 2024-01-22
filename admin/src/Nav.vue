@@ -24,9 +24,9 @@ const logout = async () => {
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#user"
               >User</a
@@ -37,6 +37,12 @@ const logout = async () => {
               >Config</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#document"
+              >Documents</a
+            >
+          </li>
+          
 
           <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -52,9 +58,9 @@ const logout = async () => {
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li> -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
-          </li>
+          </li> -->
         </ul>
         <form class="d-flex" role="search">
           <!-- <input

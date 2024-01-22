@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ApprovalConfigController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\UserController;
 use App\Models\ApprovalConfig;
 use App\Models\Document;
 use App\Models\DocumentApproval;
@@ -25,14 +28,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/users', function () {
     return User::all();
 });
+Route::post('/users', [UserController::class, 'save']);
 
 Route::get('/approvalconfigs', function () {
     return ApprovalConfig::all();
 });
+Route::post('/approvalconfigs-save-bulk', [ApprovalConfigController::class, 'saveBulk']);
+
 
 Route::get('/documents', function () {
-    return Document::all();
+    $docs = Document::all();
+
+    foreach ($docs as $d) {
+        $d->documentApprovals;
+    }
+
+    return $docs;
 });
+Route::post('/documents', [DocumentController::class, 'save']);
+
 
 Route::get('/documentapprovals', function () {
     return DocumentApproval::all();

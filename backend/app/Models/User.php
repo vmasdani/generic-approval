@@ -31,6 +31,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
+ * @property string|null $email
+ * @property string|null $name
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @mixin \Eloquent
  */
 class User extends Model
@@ -41,9 +45,10 @@ class User extends Model
         'hidden',
         'ordering',
         'uuid',
-        
+
         'username',
         'password',
+        'name',
+        'email'
     ];
-
 }

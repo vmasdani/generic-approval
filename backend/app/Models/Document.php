@@ -42,9 +42,17 @@ class Document extends Model
         'hidden',
         'ordering',
         'uuid',
-        
+
         'name',
         'document_creator_id',
     ];
 
+    public function documentApprovals()
+    {
+        return $this->hasMany(DocumentApproval::class);
+    }
+    public function documentCreator()
+    {
+        return $this->belongsTo(User::class, 'document_creator_id');
+    }
 }

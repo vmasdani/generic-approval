@@ -37,6 +37,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentApproval whereUuid($value)
  * @property int|null $included
  * @method static \Illuminate\Database\Eloquent\Builder|DocumentApproval whereIncluded($value)
+ * @property int|null $document_id
+ * @method static \Illuminate\Database\Eloquent\Builder|DocumentApproval whereDocumentId($value)
  * @mixin \Eloquent
  */
 class DocumentApproval extends Model
@@ -52,7 +54,27 @@ class DocumentApproval extends Model
         'approval_timestamp',
         'approval_needed_user_id',
         'approval_actual_signed_user_id',
-        'included'
-
+        'included',
+        'document_id'
     ];
+
+    public function approvalConfig()
+    {
+        return $this->belongsTo(ApprovalConfig::class, 'document_creator_id');
+    }
+
+    public function approvalNeededUser()
+    {
+        return $this->belongsTo(User::class, 'approval_needed_user_id');
+    }
+
+    public function approvalActualSignedUserId()
+    {
+        return $this->belongsTo(User::class, 'approval_actual_signed_user_id');
+    }
+
+    public function document()
+    {
+        return $this->belongsTo(Document::class);
+    }
 }
