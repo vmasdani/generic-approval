@@ -8,7 +8,9 @@ import { intlFormat } from "./helpers";
 
 const route = useRoute();
 const router = useRouter();
-const document = ref({}) as Ref<any>;
+const document = ref({
+  document_approvals: [],
+}) as Ref<any>;
 const users = ref([]) as Ref<any[]>;
 const configs = ref([]) as Ref<any[]>;
 
@@ -129,12 +131,34 @@ fetchUsersData();
           <td class="border border-dark">{{ i + 1 }}</td>
           <td class="border border-dark">{{ c?.position }}</td>
           <td class="border border-dark">
-            <input type="checkbox" :checked="true" />
+            <input
+              type="checkbox"
+              :checked="
+                document.document_approvals?.find(
+                  (a:any) => `${a?.approval_needed_user_id}` === `${c?.user_id}`
+                )
+              "
+              @click="()=>{
+                const found = document.document_approvals?.find(
+                  (a:any) => `${a?.approval_needed_user_id}` === `${c?.user_id}`
+                )
+
+                if(!found) {
+                  document.document_approvals?.push({
+                    approval_needed_user_id:c?.user_id
+                  })
+                }
+              }"
+            />
           </td>
           <td class="border border-dark">
             <VueSelect
               :options="users"
               :getOptionLabel="(u:any) => `${u?.name}`"
+              :modelValue="users.find((u) => `${u.id}` === `${c?.user_id}`)"
+              @update:modelValue="(u: any) => {
+                c.user_id=u?.id
+              }"
             />
           </td>
           <td class="border border-dark">

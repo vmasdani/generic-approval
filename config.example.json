@@ -5,14 +5,24 @@
       "db_name": "approval",
       "db_username": "root",
       "db_password": "mypass",
-      "base_url": "http://localhost:8000"
+      "base_url": "http://localhost:8000",
+      "mail_user": "mail@user.com",
+      "mail_password": "mailpassword",
+      "mail_host": "mail.host.com",
+      "mail_port":"465"
+
     },
     "prod": {
       "db_host": "localhost",
       "db_name": "approval",
       "db_username": "root",
       "db_password": "mypass",
-      "base_url": "http://localhost:8000"
+      "base_url": "http://localhost:8000",
+      "mail_user": "mail@user.com",
+      "mail_password": "mailpassword",
+      "mail_host": "mail.host.com",
+      "mail_port":"465"
+
     }
   }
 }
