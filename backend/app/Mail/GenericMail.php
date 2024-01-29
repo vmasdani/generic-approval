@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
+use App\Helper\Helper;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
@@ -14,15 +14,19 @@ class GenericMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private ?string $_from;
-    private ?string $_message;
+    private ?string $fromMail;
+    private ?string $message;
+    private ?string $title;
+
     /**
      * Create a new message instance.
      */
-    public function __construct(?string $from, ?string $message)
+    public function __construct(?string $title, ?string $fromMail, ?string $message)
     {
-        $_from = $from;
-        $_message = $message;
+
+        $this->fromMail = $fromMail;
+        $this->message = $message;
+        $this->title = $title;
     }
 
     /**
@@ -30,9 +34,10 @@ class GenericMail extends Mailable
      */
     public function envelope(): Envelope
     {
+
         return new Envelope(
-            from: new Address($_from ?? ''),
-            subject: 'New Approval',
+            from: new Address($this->fromMail ?? ''),
+            subject: 'Document Approval Notification: ' . ($this->title ?? ''),
         );
     }
 
