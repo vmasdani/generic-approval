@@ -30,21 +30,16 @@ Route::get('/users', function () {
 });
 Route::post('/users', [UserController::class, 'save']);
 
+Route::post('/login', [UserController::class, 'login']);
+
 Route::get('/approvalconfigs', function () {
     return ApprovalConfig::all();
 });
 Route::post('/approvalconfigs-save-bulk', [ApprovalConfigController::class, 'saveBulk']);
 
 
-Route::get('/documents', function () {
-    $docs = Document::all();
-
-    foreach ($docs as $d) {
-        $d->documentApprovals;
-    }
-
-    return $docs;
-});
+Route::get('/documents', [DocumentController::class, 'all']);
+Route::get('/documents/{id}', [DocumentController::class, 'get']);
 Route::post('/documents', [DocumentController::class, 'save']);
 
 

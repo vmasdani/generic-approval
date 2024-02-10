@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('hidden')->nullable();
 
             $table->bigInteger('approval_config_id')->nullable();
-            $table->bigInteger('approval_timestamp')->nullable();
+            $table->timestamp('approval_timestamp')->nullable();
             $table->bigInteger('approval_needed_user_id')->nullable();
             $table->bigInteger('approval_actual_signed_user_id')->nullable();
         });

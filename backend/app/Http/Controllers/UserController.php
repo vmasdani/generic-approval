@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Helper;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,22 @@ class UserController
 
         $u->save();
 
-        return response($u) ;
+        return response($u);
+    }
+
+    function login(Request $r)
+    {
+        $bod = json_decode($r->getContent());
+
+        $username = $bod->username;
+        $password = $bod->password;
+
+        $foundUser = User::query()->where('username','=',$username)->first();
+        
+        if(!$foundUser){
+            return response('User not found', 404);
+        }
+
+        return $foundUser;
     }
 }

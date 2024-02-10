@@ -9,14 +9,16 @@ import { createRouter, createWebHashHistory } from "vue-router";
 // import UserVue from "./User.vue";
 // import ConfigVue from "./Config.vue";
 import ApprovalVue from "./Approval.vue";
+import ApprovalDetailVue from "./ApprovalDetail.vue";
 
 export const ctx = ref({
+  user: JSON.parse(localStorage.getItem("user") ?? "{}") as any | null,
   apiKey: localStorage.getItem("apiKey") as null | string,
 });
 
 const routes = [
   { path: "/", component: ApprovalVue },
-  // { path: "/user", component: UserVue },
+  { path: "/approvals/:id", component: ApprovalDetailVue },
   // { path: "/config", component: ConfigVue },
 
   // { path: '/about', component: About },

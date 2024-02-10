@@ -12,3 +12,4 @@ export const intlFormat = (params: {
     return null;
   }
 };
+

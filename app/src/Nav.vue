@@ -4,6 +4,8 @@ import { ctx } from "./main";
 const logout = async () => {
   ctx.value.apiKey = null;
   localStorage.removeItem("apiKey");
+  localStorage.removeItem("user");
+  
 };
 </script>
 
