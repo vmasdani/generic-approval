@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { RouterView, useRoute } from "vue-router";
+import { RouterView,  } from "vue-router";
 import { ctx } from "./main";
 import Login from "./Login.vue";
 import Nav from "./Nav.vue";
 
-const route = useRoute();
+// const route = useRoute();
 </script>
 
 <template>
