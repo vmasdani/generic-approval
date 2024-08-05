@@ -95,11 +95,11 @@ class DocumentController
                 // Helper::ddh($gm);
 
 
-                Mail::to($foundUser->email)->send(
+                Mail::to($foundUser?->email)->send(
                     $gm
                 );
             } catch (Exception $e) {
-                Helper::ddh($e);
+                // Helper::ddh($e);
                 return;
             }
         }
